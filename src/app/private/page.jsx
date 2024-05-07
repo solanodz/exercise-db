@@ -6,11 +6,10 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { logout } from './actions'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Edit, PlusCircle, Trash } from 'lucide-react'
+import { Edit, Trash } from 'lucide-react'
 import CreateExercise from '@/components/CreateExercise'
 import { Badge } from '@/components/ui/badge'
 import deleteExercise from '@/server-actions/deleteExercise'
-import { DialogFooter } from '@/components/ui/dialog';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -25,15 +24,22 @@ import {
 
 
 export default async function PrivatePage() {
+
     const cookieStore = cookies();
     const supabase = createServerComponentClient({ cookies: () => cookieStore });
-    const { data: { session } } = await supabase.auth.getSession();
-    const user = session?.user;
+    const { data: user } = await supabase.auth.getUser(); // Get the user object
+
+    if (!user) {
+        return redirect('/login')
+    }
 
     const { data: exercises, error } = await supabase
         .from('exercises')
         .select('*')
-        .eq('user_id', user.id)
+
+    if (error || !user?.user) {
+        redirect('/login')
+    }
 
     if (error) {
         console.error('Error fetching exercises')
@@ -43,7 +49,7 @@ export default async function PrivatePage() {
         <div className='m-5 flex flex-col gap-4 max-h-screen'>
             <Card>
                 <CardHeader className='flex flex-row items-center justify-between'>
-                    <CardTitle className='font-bold tracking-tight text-muted-foreground'>Hello <span className='text-black'>{user.email}</span></CardTitle>
+                    <CardTitle className='font-bold tracking-tight text-muted-foreground'>Hello <span className='text-black'>{user?.user.email}</span></CardTitle>
                     <form action={logout}>
                         <Button>Sign out</Button>
                     </form>

@@ -10,7 +10,8 @@ const deleteExercise = async (formData) => {
 
     const cookieStore = cookies();
     const supabase = createServerComponentClient({ cookies: () => cookieStore })
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: session } = await supabase.auth.getUser();
+
     const user = session?.user
 
     if (!user) {

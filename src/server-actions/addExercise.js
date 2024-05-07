@@ -12,7 +12,8 @@ export async function addExercise(formData) {
 
     const cookieStore = cookies()
     const supabase = createServerComponentClient({ cookies: () => cookieStore })
-    const { data: { session } } = await supabase.auth.getSession()
+    const { data: session } = await supabase.auth.getUser();
+
     const user = session?.user
     if (!user) {
         console.error('⚠️ User is not logged in!!!!!')
