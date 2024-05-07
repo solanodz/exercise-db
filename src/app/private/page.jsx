@@ -71,7 +71,6 @@ export default async function PrivatePage() {
                         {exercises && exercises.map((exercise) => (
                             <Card key={exercise.id} className='flex justify-between items-center p-2 hover:drop-shadow-md duration-200'>
                                 <h2 className='font-bold text-lg'>{exercise.name}</h2>
-                                <p>{exercise.id}</p>
                                 <div className='flex gap-2'>
 
                                     <AlertDialog>
@@ -98,7 +97,7 @@ export default async function PrivatePage() {
                                         </AlertDialogContent>
                                     </AlertDialog>
 
-                                    <Button variant='ghost' size='sm'><Edit size={20} /></Button>
+                                    {/* <Button variant='ghost' size='sm'><Edit size={20} /></Button> */}
                                 </div>
                             </Card>
 

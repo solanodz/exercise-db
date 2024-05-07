@@ -32,10 +32,13 @@ export async function addExercise(formData) {
             }
         ])
 
+
     if (error) {
         console.error('⚠️ Error inserting data!!!!', error)
         return;
     }
+
+
 
     revalidatePath('/exercises', 'layout')
 
