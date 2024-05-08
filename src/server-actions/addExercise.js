@@ -38,8 +38,6 @@ export async function addExercise(formData) {
         return;
     }
 
-
-
     revalidatePath('/exercises', 'layout')
 
     return { message: '✅ Success' }

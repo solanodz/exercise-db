@@ -1,5 +1,11 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
+import {
+    createClientComponentClient,
+    createRouteHandlerClient,
+} from "@supabase/auth-helpers-nextjs";
+
+export const supabaseComponent = createClientComponentClient();
 
 export function createClient() {
     const cookieStore = cookies()

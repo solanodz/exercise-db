@@ -9,26 +9,28 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import Link from 'next/link';
 
 
-export default async function Notes() {
+export default async function Exercises() {
     const supabase = createClient();
     const { data: exercises } = await supabase.from("exercises").select();
 
     return (
-        <div className='m-3 flex flex-col gap-3'>
+        <div className='m-2 flex flex-col gap-3 max-w-xl m-2 sm:mx-auto sm:my-12'>
             <h1 className='font-bold text-4xl tracking-tight'>Exercises</h1>
-            <section className='grid grid-cols-2 gap-3'>
+            <section className=''>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Search by Title</CardTitle>
+                        <CardTitle className='text-xl'>Search by Title</CardTitle>
                     </CardHeader>
                     <CardContent className='max-w-5xl flex gap-3'>
                         <Input placeholder='Search exercise' />
                         <Button>Search</Button>
                     </CardContent>
                 </Card>
-                <Card>
+                {/* 
+                <Card className='sm:flex flex-col hidden'>
                     <CardHeader>
                         <CardTitle>Search by Tag</CardTitle>
                     </CardHeader>
@@ -44,16 +46,16 @@ export default async function Notes() {
                             </SelectContent>
                         </Select>
                     </CardContent>
-                </Card>
+                </Card> 
+                */}
             </section>
             <div className='flex flex-col gap-3'>
                 {exercises.map((exercise) => (
-                    <Card key={exercise.id}>
-                        <CardHeader>
-                            <CardTitle>{exercise.name}</CardTitle>
-                        </CardHeader>
-                        <Button href={exercise.video_url}>Watch video</Button>
-                    </Card>
+                    <Link href={`/exercises/${exercise.id}`} key={exercise.id}>
+                        <div className='p-3 border border-slate-200 rounded-lg drop-shadow-sm hover:shadow-lg duration-200'>
+                            <p className='font-bold tracking-tight text-lg'>{exercise.name}</p>
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
