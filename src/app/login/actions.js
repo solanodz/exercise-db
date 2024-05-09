@@ -44,3 +44,44 @@ export async function signup(formData) {
     revalidatePath('/', 'layout')
     redirect('/')
 }
+
+export async function googleLogin() {
+    const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    )
+
+    const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            queryParams: {
+                redirectTo: `${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/callback`,
+                access_type: 'offline',
+                prompt: 'consent',
+            },
+        },
+    })
+
+
+
+    /* 
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: process.env.NEXT_PUBLIC_SUPABASE_URL + '/auth/callback',
+                queryParams: {
+                    access_type: 'offline',
+                    prompt: 'consent',
+                }
+            }
+        })
+    
+        console.log(supabase.auth.getSession());
+    
+        if (error) {
+            redirect('/error')
+        }
+    
+        revalidatePath('/', 'layout')
+        redirect('/') */
+}

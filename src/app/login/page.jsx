@@ -1,11 +1,24 @@
+'use client'
+
 import { Label } from '@/components/ui/label'
-import { login, signup } from './actions'
+import { googleLogin, login, signup } from './actions'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import Image from 'next/image'
+import { createClient } from '@/utils/supabase/client'
 
 export default function LoginPage() {
+
+    const supabase = createClient()
+
+    const loginWithGoogle = async () => {
+        const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' })
+        if (error) {
+            console.error('Error signing in with Google', error)
+        }
+    }
+
     return (
         <Card className='max-w-md mx-3 sm:mx-auto my-24 h-min'>
             <div>
@@ -14,8 +27,9 @@ export default function LoginPage() {
                         <CardTitle className='font-bold'>Ingresa como Cliente</CardTitle>
                         <CardDescription>Ingresa a tu cuenta o crea una para acceder a los ejercicios</CardDescription>
                     </div>
-                    <Button className='w-full'><Image src={'/google-logo.png'} height={320} width={400} quality={100} alt='google logo' className='w-10 h-fit' />  Ingresar con Google</Button>
-
+                    <form>
+                        <Button formAction={loginWithGoogle} className='w-full'><Image src={'/google-logo.png'} height={320} width={400} quality={100} alt='google logo' className='w-10 h-fit' />  Ingresar con Google</Button>
+                    </form>
                 </CardHeader>
             </div>
             <CardFooter className='flex flex-col w-full gap-4 pt-4'>
