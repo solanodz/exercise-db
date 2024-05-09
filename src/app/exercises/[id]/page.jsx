@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { createClient } from "@/utils/supabase/server"
 import { ArrowBigLeft, ArrowLeft } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 const ExerciseIdPage = async ({ params }) => {
@@ -30,7 +31,10 @@ const ExerciseIdPage = async ({ params }) => {
                     className="rounded-xl border border-slate-200"
                 />
             </div>
-            <Link href="/exercises" className={` text-left text-sm flex gap-2 mr-auto ${buttonVariants({ variant: 'link' })}`} ><ArrowLeft size={18} /> Volver a los ejercicios</Link>
+            <div className="flex items-center justify-between">
+                <Link href="/exercises" className={` text-left text-sm flex gap-2 mr-auto ${buttonVariants({ variant: 'link' })}`} ><ArrowLeft size={18} /> Volver a los ejercicios</Link>
+                <Image src='/detraining-logo.png' width={80} height={80} alt='Devning+' />
+            </div>
 
             <div className="mx-auto">
                 <Card className='min-w-xl'>

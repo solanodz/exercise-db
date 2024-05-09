@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import Link from 'next/link';
 import UpdateExercise from '@/components/UpdateExercise';
+import Image from 'next/image';
 
 
 export default async function PrivatePage() {
@@ -47,13 +48,17 @@ export default async function PrivatePage() {
     }
 
     return (
-        <div className='m-5 flex flex-col gap-4 max-h-screen'>
+
+        <div className='p-5 flex flex-col gap-4 max-h-screen '>
             <Card className='flex flex-col sm:flex-row items-center justify-between'>
                 <CardHeader className='flex flex-col'>
                     <CardTitle className='font-bold tracking-tight text-muted-foreground'>Hola <span className='text-black'>{user?.user.email}</span> 👋🏽</CardTitle>
                     <CardDescription>Desde aquí puedes agregar nuevos ejercicios a la base de datos</CardDescription>
                 </CardHeader>
-                <form action={logout} className='p-6 ml-auto'>
+                <form action={logout} className='p-6 ml-auto flex gap-3 items-center'>
+                    <Link href='/'>
+                        <Image src='/detraining-logo.png' width={100} height={100} alt='Devning+' />
+                    </Link>
                     <Button className='flex ml-auto'>Sign out</Button>
                 </form>
             </Card>
@@ -74,7 +79,7 @@ export default async function PrivatePage() {
 
                             <Card key={exercise.id} className='flex justify-between items-center p-2 hover:drop-shadow-md duration-200'>
                                 <Link href={`/exercises/${exercise.id}`}>
-                                    <h2 className='font-bold w-fit bg-blue-300 px-3 text-lg'>{exercise.name}</h2>
+                                    <h2 className='font-bold w-fit text-lg'>{exercise.name}</h2>
                                 </Link>
                                 <div className='flex gap-2'>
                                     <AlertDialog>
@@ -106,7 +111,7 @@ export default async function PrivatePage() {
                             </Card>
                         ))}
                     </CardContent>
-                    <CardDescription className='p-6 text-center items-end'>Haz click en un ejercicio para ver más detalles</CardDescription>
+                    <CardDescription className='p-6 text-center text-xs tracking-tight items-end'>Haz click en un ejercicio para ver más detalles</CardDescription>
                 </Card>
             </section>
         </div >

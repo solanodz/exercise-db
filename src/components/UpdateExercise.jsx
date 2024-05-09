@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
 import { Edit, Loader2, PlusCircle } from 'lucide-react'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
@@ -30,7 +30,7 @@ const UpdateExercise = ({ exercise }) => {
 
     return (
         <Dialog>
-            <DialogTrigger><Edit /></DialogTrigger>
+            <DialogTrigger className={buttonVariants({ variant: 'ghost' })}><Edit /></DialogTrigger>
             <DialogContent>
                 <DialogHeader>
                     <DialogTitle>Editar ejercicio</DialogTitle>
