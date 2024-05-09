@@ -52,7 +52,7 @@ export default async function PrivatePage() {
         <div className='p-5 flex flex-col gap-4 max-h-screen '>
             <Card className='flex flex-col sm:flex-row items-center justify-between'>
                 <CardHeader className='flex flex-col'>
-                    <CardTitle className='font-bold tracking-tight text-muted-foreground'>Hola <span className='text-black'>{user?.user.email}</span> 👋🏽</CardTitle>
+                    <CardTitle className='font-bold tracking-tight text-slate-400'>Hola <span className='text-black'>{user?.user.email}</span> 👋🏽</CardTitle>
                     <CardDescription>Desde aquí puedes agregar nuevos ejercicios a la base de datos</CardDescription>
                 </CardHeader>
                 <form action={logout} className='p-6 ml-auto flex gap-3 items-center'>
