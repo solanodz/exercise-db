@@ -32,7 +32,7 @@ const ExerciseIdPage = async ({ params }) => {
                 />
             </div>
             <div className="flex items-center justify-between">
-                <Link href="/exercises" className={` text-left text-sm flex gap-2 mr-auto ${buttonVariants({ variant: 'link' })}`} ><ArrowLeft size={18} /> Volver a los ejercicios</Link>
+                <Link href="/exercises" className={` text-left text-sm flex gap-2 mr-auto ${buttonVariants({ variant: 'link' })}`} ><ArrowLeft size={18} />Back to exercises page</Link>
                 <Image src='/detraining-logo.png' width={80} height={80} alt='Devning+' />
             </div>
 

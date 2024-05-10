@@ -25,8 +25,8 @@ const ExercisesList = ({ initialExercises }) => {
             <Card className='bg-white'>
                 <CardHeader className='flex sm:flex-row flex-col-reverse justify-between'>
                     <div>
-                        <CardTitle>Lista de ejercicios</CardTitle>
-                        <CardDescription className=''>Escribe el nombre del ejercicio que tenes en tu planilla</CardDescription>
+                        <CardTitle>All exercises</CardTitle>
+                        <CardDescription className='w-10/12'>Search for exercises and click them to get more information.</CardDescription>
                     </div>
                     <Link href={'/'} className='sm:ml-auto ml-0'>
                         <Image src="/detraining-logo.png" alt="Logo" width={80} height={80} className='mb-3 sm:m-0' />

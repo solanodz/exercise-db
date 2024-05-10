@@ -50,29 +50,30 @@ export default async function PrivatePage() {
     return (
 
         <div className='p-5 flex flex-col gap-4 max-h-screen '>
-            <Card className='flex flex-col sm:flex-row items-center justify-between'>
-                <CardHeader className='flex flex-col'>
-                    <CardTitle className='font-bold tracking-tight text-slate-400'>Hola <span className='text-black'>{user?.user.email}</span> 👋🏽</CardTitle>
-                    <CardDescription>Desde aquí puedes agregar nuevos ejercicios a la base de datos</CardDescription>
-                </CardHeader>
-                <form action={logout} className='p-6 ml-auto flex gap-3 items-center'>
-                    <Link href='/'>
-                        <Image src='/detraining-logo.png' width={100} height={100} alt='Devning+' />
-                    </Link>
-                    <Button className='flex ml-auto'>Sign out</Button>
-                </form>
-            </Card>
+            <section>
+                <Card className='flex flex-col sm:flex-row items-center justify-between'>
+                    <CardHeader className='flex flex-col'>
+                        <CardTitle className='font-bold tracking-tight text-slate-400'>Hello <span className='text-black'>{user?.user.email}</span> 👋🏽</CardTitle>
+                        <CardDescription>Here you can add new exercises to your database</CardDescription>
+                    </CardHeader>
+                    <form action={logout} className='p-6 ml-auto flex gap-3 items-center'>
+                        <Link href='/'>
+                            <Image src='/detraining-logo.png' width={100} height={100} alt='Devning+' />
+                        </Link>
+                        <Button className='flex ml-auto'>Sign out</Button>
+                    </form>
+                </Card>
+            </section>
             <section className='grid grid-rows-2 sm:grid-cols-2 gap-4'>
-
                 <CreateExercise />
                 <Card className='flex flex-col justify-between'>
                     <CardHeader>
                         <div className='flex justify-between items-center'>
-                            <CardTitle className='font-bold tracking-tight flex gap-2'><Dumbbell />Tus Ejercicios</CardTitle>
+                            <CardTitle className='font-bold tracking-tight flex gap-2'><Dumbbell />Your exercises</CardTitle>
                             <Badge className='w-fit text-xl'>{exercises.length}</Badge>
                         </div>
-                        <CardDescription>Estos son los ejercicios que vas agregando hasta ahora</CardDescription>
-                        <Link href='/exercises' className='py-2 text-sm flex items-center gap-2 hover:gap-5 hover:underline font-medium duration-200'>Ver todos los ejercicios<ArrowRight size={18} /></Link>
+                        <CardDescription>These are the exercises you&apos;ve been adding so far.</CardDescription>
+                        <Link href='/exercises' className='py-2 text-sm flex items-center gap-2 hover:gap-5 hover:underline font-medium duration-200'>All exercises<ArrowRight size={18} /></Link>
                     </CardHeader>
                     <CardContent className='flex flex-col gap-2'>
                         {exercises && exercises.map((exercise) => (
@@ -91,7 +92,7 @@ export default async function PrivatePage() {
                                                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                                                 <AlertDialogDescription>
                                                     This action cannot be undone. This will permanently delete your
-                                                    account and remove your data from our servers.
+                                                    exercise and remove your data from our servers.
                                                 </AlertDialogDescription>
                                             </AlertDialogHeader>
                                             <AlertDialogFooter>
@@ -111,7 +112,7 @@ export default async function PrivatePage() {
                             </Card>
                         ))}
                     </CardContent>
-                    <CardDescription className='p-6 text-center text-xs tracking-tight items-end'>Haz click en un ejercicio para ver más detalles</CardDescription>
+                    <CardDescription className='p-6 text-center text-xs tracking-tight items-end'>Click the exercises to see more details</CardDescription>
                 </Card>
             </section>
         </div >
