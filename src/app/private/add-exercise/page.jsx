@@ -98,7 +98,7 @@ export default async function PrivatePage() {
                             </Card>
                         ))}
                     </CardContent>
-                    <CardDescription className='p-6 text-center text-xs tracking-tight items-end'>Click the exercises to see more details</CardDescription>
+                    <CardDescription className='p-6 text-center text-xs tracking-tight items-end'>Clic en el ejercicio para ver mas detalles</CardDescription>
                 </Card>
             </section>
         </div >

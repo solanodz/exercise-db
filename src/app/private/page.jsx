@@ -52,56 +52,14 @@ export default async function PrivatePage() {
 
         <div className='flex flex-col gap-4'>
             <PrivateNav />
-            <section className='px-4 grid grid-rows-2 sm:grid-cols-2 gap-4'>
-                <CreateExercise />
-                <Card className='flex flex-col justify-between'>
-                    <CardHeader>
-                        <div className='flex justify-between items-center'>
-                            <CardTitle className='font-bold tracking-tight flex gap-2'><Dumbbell />Ejercicios</CardTitle>
-                            <Badge className='w-fit text-xl'>{exercises.length}</Badge>
-                        </div>
-                        <CardDescription>Estos son los ejercicios que vas agregando hasta ahora</CardDescription>
-                        <Link href='/exercises' className='py-2 text-sm flex items-center gap-2 hover:gap-5 hover:underline font-medium duration-200'>Todos los ejercicios<ArrowRight size={18} /></Link>
-                    </CardHeader>
-                    <CardContent className='flex flex-col gap-2'>
-                        {exercises && exercises.map((exercise) => (
-
-                            <Card key={exercise.id} className='flex justify-between items-center p-2 hover:drop-shadow-md duration-200'>
-                                <Link href={`/exercises/${exercise.id}`}>
-                                    <h2 className='font-bold w-fit text-lg'>{exercise.name}</h2>
-                                </Link>
-                                <div className='flex gap-2'>
-                                    <AlertDialog>
-                                        <AlertDialogTrigger asChild>
-                                            <Button variant="ghost"><Trash size={20} /></Button>
-                                        </AlertDialogTrigger>
-                                        <AlertDialogContent>
-                                            <AlertDialogHeader>
-                                                <AlertDialogTitle>¿Estás seguro?</AlertDialogTitle>
-                                                <AlertDialogDescription>
-                                                    Esta acción no se puede deshacer. Esto eliminara el ejercicio y toda su información de nuestro servidor.
-                                                </AlertDialogDescription>
-                                            </AlertDialogHeader>
-                                            <AlertDialogFooter>
-                                                <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                                                <>
-                                                    <form action={deleteExercise}>
-                                                        <input type='hidden' name='id' value={exercise.id} />
-                                                        <AlertDialogAction type='submit' size='sm' className='text-sm'>Eliminar</AlertDialogAction>
-                                                    </form>
-                                                </>
-                                            </AlertDialogFooter>
-                                        </AlertDialogContent>
-                                    </AlertDialog>
-
-                                    <UpdateExercise exercise={exercise} />
-                                </div>
-                            </Card>
-                        ))}
-                    </CardContent>
-                    <CardDescription className='p-6 text-center text-xs tracking-tight items-end'>Click the exercises to see more details</CardDescription>
-                </Card>
-            </section>
+            <section className='px-4 flex flex-col gap-4'>
+                <h1 className='text-3xl tracking-tight font-bold text-slate-500'>{user?.user.email} 👋🏽</h1>
+                <div className='tracking-tight text-muted-foreground'>
+                    <p>Este es tu panel de administrador, desde acá vas a poder agregar ejercicios y entrenamientos.</p>
+                    <p>Recordá actualizar los entrenamientos cada semana para brindar el mejor servicio personalizado a tus clientes.</p>
+                </div>
+                <h3 className='font-semibold tracking-tight text-muted-foreground'>Cada entrenador deberá agregar las sesiones de entrenamiento que le corresponden para cada cliente.</h3>
+            </section >
         </div >
     )
 }
