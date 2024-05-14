@@ -6,10 +6,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex h-2/3 md:flex-row flex-col items-center gap-3 bg-blue-600">
+    <main className="flex h-2/3 md:flex-row flex-col items-center gap-3 bg-green-600">
       <section className="w-full h-screen justify-center md:w-1/2 sm:p-0 p-4 flex flex-col items-center mx-auto text-center md:text-left max-w-xl">
         <h1 className={`${montserrat.className} antialiased font-black text-5xl sm:text-7xl tracking-tight text-left text-white drop-shadow-md`}>WELCOME TO DETRAINING</h1>
-        <p className="tracking-tight text-blue-300 font-medium text-left sm:text-md text-sm w-full">Exercises database with video explanation and description.</p>
+        <p className="tracking-tight text-green-300 font-medium text-left sm:text-md text-sm w-full">Exercises database with video explanation and description.</p>
         <div className="flex gap-2 md:flex-row flex-col my-4 mr-auto">
           <Link href="/private" className={buttonVariants({ variant: 'default' })}>Admin panel</Link>
           <Link href="/exercises" className={`${buttonVariants({ variant: 'default' })} flex gap-3`}> <Dumbbell size={18} /> Exercises </Link>
